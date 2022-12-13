@@ -1,7 +1,77 @@
-const LoginForm = () => {
+import {connect} from "react-redux";
+import {useState} from "react";
+import {setAuthedUser} from "../actions/authedUser";
+
+
+const LoginForm = (props) => {
+
+    const [user, setUser] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (user.password !== password) {
+            return alert("Wrong password")
+        }
+
+        props.dispatch(setAuthedUser(user));
+    }
+
+    const handlePasswordChange = (e) => {
+        const password = e.target.value;
+        setPassword(password);
+    };
+
+    const handleUserChange = (e) => {
+        const user = e.target.value;
+        setUser(props.users[user]);
+    }
+
     return (
-        <div>Login Form</div>
+        <div className="login-form">
+            <form onSubmit={handleSubmit}>
+                <div className="form-title">
+                    <p>Employees Poll App</p>
+                </div>
+
+                <div className="form-item">
+                    <label htmlFor="username">
+                        <span>Username</span>
+                    </label>
+                    <select className="form-input" onChange={handleUserChange} required>
+                        <option key="" value="none"> Available users</option>
+                        {props.userIds.map((id) => (
+                            <option
+                                key={props.users[id].id}
+                                value={props.users[id].id}
+                            >
+                                {props.users[id].name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="form-item">
+                    <label htmlFor="password">
+                        <span>Password</span>
+                    </label>
+                    <input autoComplete="true" onChange={handlePasswordChange} type="password" className="form-input"
+                           required/>
+                </div>
+
+                <div className="form-item">
+                    <input type="submit" value="Log in" className="form-submit" disabled={password === ""}/>
+                </div>
+            </form>
+        </div>
     );
 }
 
-export default LoginForm;
+const mapStateToProps = ({users, authedUser}) => ({
+    authedUser,
+    userIds: Object.keys(users),
+    users
+});
+
+export default connect(mapStateToProps)(LoginForm);

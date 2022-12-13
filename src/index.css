@@ -1,13 +1,46 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background: #ffff;
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Login form component*/
+
+.login-form {
+  color: #ffffff;
+  background: rgba(12, 87, 157, 0.8);
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  width:320px;
+}
+
+.form-title {
+  padding-top: 10px;
+  text-align: center;
+}
+.form-item {
+  margin: 5px 5px 5px 5px;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  text-align: center;
+}
+
+.form-submit {
+  margin-bottom: 5px;
 }
