@@ -14,7 +14,7 @@ const App = (props) => {
 
   useEffect(() => {
     props.dispatch(handleInitialData());
-  });
+  }, []);
 
   return (
       <Fragment>
