@@ -1,25 +1,46 @@
-import logo from '../logo.svg';
 import '../App.css';
 
-const App = () =>  {
+import {useEffect, Fragment} from "react";
+import {connect} from "react-redux";
+import {LoadingBar} from "react-redux-loading-bar";
+import {Route, Routes} from "react-router-dom";
+
+import {handleInitialData} from "../actions/shared";
+import Nav from "./Nav";
+import LoginForm from "./LoginForm";
+import Dashboard from "./Dashboard";
+
+const App = (props) => {
+
+  useEffect(() => {
+    props.dispatch(handleInitialData());
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Fragment>
+        <LoadingBar />
+        <div className="container">
+          {props.loading === true && props.authedUser === null ?
+              <Routes>
+                <Route path="/" exact element={<LoginForm />} />
+              </Routes>
+              : (
+              <>
+              <Nav />
+               <Routes>
+                 <Route path="/dashboard" exact element={<Dashboard />} />
+               </Routes>
+              </>
+          )}
+        </div>
+      </Fragment>
+  )
 }
 
-export default App;
+const mapStateToProps = ({ authedUser, users }) => ({
+  loading: authedUser === null,
+  authedUser: authedUser,
+  users: users,
+});
+
+export default connect(mapStateToProps)(App);
