@@ -1,6 +1,15 @@
 # Employee Polls Project
 
-This is the repository for the final assessment project for Udacity's React & Redux course.
+To run the project without major problems, it's recommended to use the following versions on Node and Npm:
+
+Node version: v18.12.1
+Npm version: 8.19.2
+Node and Npm versions can be easily managed through Node Version Manager
+
+After that, it should be simple as running npm install && npm start
+
+
+## This is the repository for the final assessment project for Udacity's React & Redux course.
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
 
