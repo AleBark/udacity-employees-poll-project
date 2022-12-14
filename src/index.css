@@ -80,3 +80,15 @@ li a:hover:not(.active) {
 .active {
   background-color: rgba(11, 39, 72, 0.8);
 }
+
+/* Questions */
+.questions-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.question-card {
+  height: 200px;
+  border: 1px solid rgba(12, 87, 157, 0.8);
+  border-radius: 4%;
+}
