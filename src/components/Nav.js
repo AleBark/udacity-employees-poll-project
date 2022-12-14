@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import {logAuthedUserOut} from "../actions/authedUser";
+import UserAvatar from "./UserAvatar";
 
 const Nav = (props) => {
 
@@ -18,12 +19,15 @@ const Nav = (props) => {
             <li style={{float: "right"}}>
                 <a href="#" onClick={handleLogout}>
                     Logout from: <strong>{props.authedUser.name}</strong>
-                    <img style={{
-                        marginLeft: "10px",
-                        width: "16px",
-                        height: "16px",
-                        borderRadius: "50%"
-                    }} src={props.authedUser.avatarURL} alt="avatar"/>
+                    <UserAvatar
+                        style={{
+                            marginLeft: "10px",
+                            width: "16px",
+                            height: "16px",
+                            borderRadius: "50%"
+                        }}
+                        avatarUrl={props.authedUser.avatarURL}
+                    />
                 </a>
             </li>
         </ul>
