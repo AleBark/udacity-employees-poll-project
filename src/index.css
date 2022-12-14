@@ -89,6 +89,10 @@ li a:hover:not(.active) {
 
 .question-card {
   height: 200px;
+  width: 200px;
   border: 1px solid rgba(12, 87, 157, 0.8);
   border-radius: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

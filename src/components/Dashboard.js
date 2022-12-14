@@ -1,4 +1,5 @@
 import {connect} from "react-redux";
+import {formatDate} from "../utils/formatDate";
 
 const Dashboard = (props) => {
 
@@ -18,21 +19,19 @@ const Dashboard = (props) => {
                 <legend>New</legend>
                 <div className="questions-container">
                     {notAnsweredQuestions.map((questionId) => (
-                            <div className="question-card">
-                                <h5>
-                                    <img style={{
-                                        margin: "10px 20px 0px 10px",
-                                        width: "36px",
-                                        height: "36px",
-                                        borderRadius: "50%"
-                                    }} src={props.users[props.questions[questionId].author].avatarURL} alt="avatar"/>
-                                    {props.questions[questionId].author}
-                                </h5>
-                                <hr/>
-                                <span>{props.questions[questionId].id}</span>
-                                <hr/>
-                                <button onClick={() => showQuestion(props.questions[questionId])}> Show</button>
-                            </div>
+                        <div className="question-card">
+                            <h5>
+                                {props.questions[questionId].author}
+                                <img style={{
+                                    margin: "14px 10px 0px 20px",
+                                    width: "36px",
+                                    height: "36px",
+                                    borderRadius: "50%"
+                                }} src={props.users[props.questions[questionId].author].avatarURL} alt="avatar"/>
+                            </h5>
+                            <span>{formatDate(props.questions[questionId].timestamp)}</span> <hr/>
+                            <button onClick={() => showQuestion(props.questions[questionId])}> Show</button>
+                        </div>
                         )
                     )}
                 </div>
@@ -44,16 +43,16 @@ const Dashboard = (props) => {
                     {answeredQuestions.map((questionId) => (
                             <div className="question-card">
                                 <h5>
+                                    {props.questions[questionId].author}
                                     <img style={{
-                                        margin: "10px 20px 0px 10px",
+                                        margin: "14px 10px 0px 20px",
                                         width: "36px",
                                         height: "36px",
                                         borderRadius: "50%"
                                     }} src={props.users[props.questions[questionId].author].avatarURL} alt="avatar"/>
-                                    {props.questions[questionId].author}
                                 </h5>
-                                <hr/>
-                                <span>{props.questions[questionId].id}</span>
+                                <span>{formatDate(props.questions[questionId].timestamp)}</span> <hr/>
+                                <button onClick={() => showQuestion(props.questions[questionId])}> Show</button>
                             </div>
                         )
                     )}
