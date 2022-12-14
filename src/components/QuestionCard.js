@@ -1,6 +1,7 @@
 import {formatDate} from "../utils/formatDate";
 import {connect} from "react-redux";
 import UserAvatar from "./UserAvatar";
+import PropTypes from "prop-types";
 
 const QuestionCard = (props) => {
 
@@ -31,4 +32,9 @@ const mapStateToProps = ({questions, users}, {id}) => ({
     users,
     question: questions[id],
 });
+
+QuestionCard.propTypes = {
+    id: PropTypes.string.isRequired,
+};
+
 export default connect(mapStateToProps)(QuestionCard)
