@@ -1,6 +1,6 @@
 import '../App.css';
 
-import {useEffect, Fragment} from "react";
+import {Fragment, useEffect} from "react";
 import {connect} from "react-redux";
 import {LoadingBar} from "react-redux-loading-bar";
 import {Route, Routes} from "react-router-dom";
@@ -8,35 +8,41 @@ import {Route, Routes} from "react-router-dom";
 import {handleInitialData} from "../actions/shared";
 import LoginForm from "./LoginForm";
 import Dashboard from "./Dashboard";
+import Nav from "./Nav";
 
 const App = (props) => {
 
-  useEffect(() => {
-    props.dispatch(handleInitialData());
-  }, []);
+    useEffect(() => {
+        props.dispatch(handleInitialData());
+    }, []);
 
-  return (
-      <Fragment>
-        <LoadingBar />
-
-        <div className="container">
-          {
-              props.loading !== true ?
-               <Routes>
-                 <Route path="/" exact element={<Dashboard />} />
-               </Routes>
-              :
-              <LoginForm />
-          }
-        </div>
-      </Fragment>
-  )
+    return (
+        <Fragment>
+            <LoadingBar/>
+                {
+                    props.authedUser === null
+                     ?
+                        <div className="login-contents">
+                            <Routes>
+                               <Route path="/" exact element={<LoginForm/>}/>
+                            </Routes>
+                        </div>
+                     :
+                        <div className="app-contents">
+                            <Nav />
+                            <Routes>
+                                <Route path="/" exact element={<Dashboard/>}/>
+                            </Routes>
+                        </div>
+                }
+        </Fragment>
+    )
 }
 
-const mapStateToProps = ({ authedUser, users }) => ({
-  loading: authedUser === null,
-  authedUser: authedUser,
-  users: users,
+const mapStateToProps = ({authedUser, users}) => ({
+    loading: authedUser === null,
+    authedUser: authedUser,
+    users: users,
 });
 
 export default connect(mapStateToProps)(App);

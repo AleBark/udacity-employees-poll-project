@@ -16,6 +16,12 @@ code {
     monospace;
 }
 
+.login-contents {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 /* Login form component*/
 
 .login-form {
@@ -35,12 +41,42 @@ code {
 }
 
 .form-input {
-  display: flex;
-  flex-direction: column;
   width: 95%;
-  text-align: center;
 }
 
 .form-submit {
   margin-bottom: 5px;
+}
+
+/* Nav bar component */
+.nav-bar{
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(12, 87, 157, 0.8);
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: rgba(11, 39, 72, 0.8);
 }
