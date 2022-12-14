@@ -2,12 +2,9 @@ import {formatDate} from "../utils/formatDate";
 import {connect} from "react-redux";
 import UserAvatar from "./UserAvatar";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const QuestionCard = (props) => {
-
-    const showQuestion = (question) => {
-        console.log(question)
-    }
 
     return (
         <div className="question-card">
@@ -24,7 +21,9 @@ const QuestionCard = (props) => {
                 />
             </h5>
             <span>{formatDate(props.question.timestamp)}</span> <hr/>
-            <button onClick={() => showQuestion(props.question)}> Show</button>
+            <Link to={`/question/${props.question.id}`} className="tweet">
+                <button> Show </button>
+            </Link>
         </div>
     )
 }

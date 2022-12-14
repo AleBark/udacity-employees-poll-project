@@ -87,6 +87,24 @@ li a:hover:not(.active) {
   justify-content: space-evenly;
 }
 
+.question-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.question-options {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.question-subtitle {
+  display: flex;
+  justify-content: center;
+}
+
 .question-card {
   height: 200px;
   width: 200px;
@@ -95,4 +113,13 @@ li a:hover:not(.active) {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.option {
+  display: flex;
+  flex-direction: column;
+}
+
+.option > button {
+  background-color: rgba(12, 87, 157, 0.8);
+  border: 1px solid rgba(12, 87, 157, 0.8);
 }

@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {formatDate} from "../utils/formatDate";
 import QuestionCard from "./QuestionCard";
 
 const Dashboard = (props) => {
@@ -17,7 +16,7 @@ const Dashboard = (props) => {
                 <legend>New</legend>
                 <div className="questions-container">
                     {notAnsweredQuestions.map((questionId) => (
-                            <QuestionCard id={questionId}/>
+                            <QuestionCard key={questionId} id={questionId}/>
                         )
                     )}
                 </div>
@@ -27,7 +26,7 @@ const Dashboard = (props) => {
                 <legend>Done</legend>
                 <div className="questions-container">
                     {answeredQuestions.map((questionId) => (
-                            <QuestionCard id={questionId}/>
+                            <QuestionCard key={questionId} id={questionId}/>
                         )
                     )}
                 </div>

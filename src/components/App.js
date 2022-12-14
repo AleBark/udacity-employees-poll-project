@@ -9,6 +9,7 @@ import {handleInitialData} from "../actions/shared";
 import LoginForm from "./LoginForm";
 import Dashboard from "./Dashboard";
 import Nav from "./Nav";
+import Question from "./Question";
 
 const App = (props) => {
 
@@ -32,6 +33,7 @@ const App = (props) => {
                             <Nav />
                             <Routes>
                                 <Route path="/" exact element={<Dashboard/>}/>
+                                <Route path="/question/:id" element={<Question />} />
                             </Routes>
                         </div>
                 }
