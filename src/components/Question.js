@@ -2,6 +2,7 @@ import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import UserAvatar from "./UserAvatar";
 import {handleQuestionAnswer} from "../actions/questions";
+import {handleSaveUserQuestion} from "../actions/authedUser";
 
 const withRouter = (Component) => {
     return (props) => {
@@ -22,6 +23,7 @@ const Question = (props) => {
     if (userHasAlreadyAnsweredThisQuestion){
         selectedUserChoice = props.authedUser.answers[question.id]
     }
+
 
     const navigate = useNavigate();
 
