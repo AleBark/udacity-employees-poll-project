@@ -1,8 +1,10 @@
 import {connect} from "react-redux";
 import {logAuthedUserOut} from "../actions/authedUser";
 import UserAvatar from "./UserAvatar";
+import {useNavigate} from "react-router-dom";
 
 const Nav = (props) => {
+    const navigate = useNavigate();
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -13,9 +15,9 @@ const Nav = (props) => {
 
     return (
         <ul className="nav-bar">
-            <li><a className={document.location.pathname === "/" ? "active" : ""} href="/">Dashboard</a></li>
-            <li><a className={document.location.pathname === "/leaderboard" ? "active" : ""} href="/">Leaderboard</a></li>
-            <li><a className={document.location.pathname === "/new" ? "active" : ""} href="/">New Poll</a></li>
+            <li><a className={document.location.pathname === "/" ? "active" : ""} onClick={() => navigate("/")}>Dashboard</a></li>
+            <li><a className={document.location.pathname === "/leaderboard" ? "active" : ""} onClick={() => navigate("/leaderboard")}>Leaderboard</a></li>
+            <li><a className={document.location.pathname === "/new" ? "active" : ""} onClick={() => navigate("/add")}>New Poll</a></li>
             <li style={{float: "right"}}>
                 <a href="#" onClick={handleLogout}>
                     Logout from: <strong>{props.authedUser.name}</strong>
