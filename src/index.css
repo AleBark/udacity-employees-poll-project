@@ -147,3 +147,38 @@ td {
   display: flex;
   justify-content: center;
 }
+
+/* Poll component */
+
+.poll-title {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.poll-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.poll-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poll-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poll-option > input {
+  width: 100%;
+}
+
+.poll-submit > input {
+  width: 100%;
+}
