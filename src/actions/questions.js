@@ -1,5 +1,6 @@
 import {_saveQuestionAnswer} from "../api/_DATA";
-import {removeUserQuestionAnswer, saveUserQuestionAnswer} from "./authedUser";
+import {removeAuthedUserQuestionAnswer, saveAuthedUserQuestionAnswer} from "./authedUser";
+import {removeUserQuestionAnswer, saveUserQuestionAnswer} from "./users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const REMOVE_QUESTION_ANSWER = "REMOVE_QUESTION_ANSWER";
@@ -36,12 +37,14 @@ export function handleQuestionAnswer(info) {
     return (dispatch) => {
 
         dispatch(saveQuestionAnswer(info));
+        dispatch(saveAuthedUserQuestionAnswer(info));
         dispatch(saveUserQuestionAnswer(info));
 
         return _saveQuestionAnswer(info).catch((e) => {
             dispatch(removeQuestionAnswer(info));
+            dispatch(removeAuthedUserQuestionAnswer(info));
             dispatch(removeUserQuestionAnswer(info));
-            alert("The was an error selecting the answer. Try again.".e);
+            alert("The was an error selecting the answer. Try again." + e);
         });
     };
 }

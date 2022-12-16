@@ -1,7 +1,7 @@
-export const SAVE_USER_QUESTION_ANSWER = "SAVE_USER_QUESTION_ANSWER";
+export const SAVE_AUTHED_USER_QUESTION_ANSWER = "SAVE_AUTHED_USER_QUESTION_ANSWER";
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 export const LOG_AUTHED_USER_OUT = "LOG_AUTHED_USER_OUT";
-export const REMOVE_USER_QUESTION_ANSWER = "REMOVE_USER_QUESTION_ANSWER";
+export const REMOVE_AUTHED_USER_QUESTION_ANSWER = "REMOVE_AUTHED_USER_QUESTION_ANSWER";
 
 export function setAuthedUser(authedUser) {
     return {
@@ -17,18 +17,18 @@ export function logAuthedUserOut() {
     }
 }
 
-export function removeUserQuestionAnswer({ authedUser, qid, answer }){
+export function removeAuthedUserQuestionAnswer({ authedUser, qid, answer }){
     return {
-        type: REMOVE_USER_QUESTION_ANSWER,
+        type: REMOVE_AUTHED_USER_QUESTION_ANSWER,
         authedUser,
         qid,
         answer
     }
 }
 
-export function saveUserQuestionAnswer({ authedUser, qid, answer }){
+export function saveAuthedUserQuestionAnswer({ authedUser, qid, answer }){
     return {
-        type: SAVE_USER_QUESTION_ANSWER,
+        type: SAVE_AUTHED_USER_QUESTION_ANSWER,
         authedUser,
         qid,
         answer

@@ -1,9 +1,9 @@
 import {
     LOG_AUTHED_USER_OUT,
-    REMOVE_USER_QUESTION_ANSWER,
+    SAVE_AUTHED_USER_QUESTION_ANSWER,
+    REMOVE_AUTHED_USER_QUESTION_ANSWER,
     SET_AUTHED_USER
 } from "../actions/authedUser";
-import {SAVE_USER_QUESTION_ANSWER} from "../actions/authedUser";
 
 export default function authedUser(state = null, action) {
     switch (action.type) {
@@ -14,7 +14,7 @@ export default function authedUser(state = null, action) {
             };
         case LOG_AUTHED_USER_OUT:
             return {};
-        case SAVE_USER_QUESTION_ANSWER:
+        case SAVE_AUTHED_USER_QUESTION_ANSWER:
             return {
                 ...state,
                 answers: {
@@ -22,7 +22,7 @@ export default function authedUser(state = null, action) {
                    [action.qid]: action.answer
                 }
             }
-        case REMOVE_USER_QUESTION_ANSWER:
+        case REMOVE_AUTHED_USER_QUESTION_ANSWER:
             const updatedAnswers = {...state.answers};
             delete updatedAnswers[action.qid]
 

@@ -123,3 +123,27 @@ li a:hover:not(.active) {
   background-color: rgba(12, 87, 157, 0.8);
   border: 1px solid rgba(12, 87, 157, 0.8);
 }
+/* Leaderboard component */
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4%;
+}
+
+.leaderboard-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+table, th, td {
+  border: 1px solid rgba(12, 87, 157, 0.8);
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+.user-column {
+  display: flex;
+  justify-content: center;
+}

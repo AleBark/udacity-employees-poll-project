@@ -10,6 +10,7 @@ import LoginForm from "./LoginForm";
 import Dashboard from "./Dashboard";
 import Nav from "./Nav";
 import Question from "./Question";
+import Leaderboard from "./Leaderboard";
 
 const App = (props) => {
 
@@ -34,6 +35,7 @@ const App = (props) => {
                             <Routes>
                                 <Route path="/" exact element={<Dashboard/>}/>
                                 <Route path="/question/:id" element={<Question />} />
+                                <Route path="/leaderboard" element={<Leaderboard />} />
                             </Routes>
                         </div>
                 }
