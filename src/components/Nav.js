@@ -10,14 +10,14 @@ const Nav = (props) => {
         e.preventDefault();
         props.dispatch(logAuthedUserOut());
 
-        window.location.reload()
+        navigate("/")
     }
 
     return (
         <ul className="nav-bar">
             <li><a className={document.location.pathname === "/" ? "active" : ""} onClick={() => navigate("/")}>Dashboard</a></li>
             <li><a className={document.location.pathname === "/leaderboard" ? "active" : ""} onClick={() => navigate("/leaderboard")}>Leaderboard</a></li>
-            <li><a className={document.location.pathname === "/new" ? "active" : ""} onClick={() => navigate("/add")}>New Poll</a></li>
+            <li><a className={document.location.pathname === "/add" ? "active" : ""} onClick={() => navigate("/add")}>New Poll</a></li>
             <li style={{float: "right"}}>
                 <a href="#" onClick={handleLogout}>
                     Logout from: <strong>{props.authedUser.name}</strong>

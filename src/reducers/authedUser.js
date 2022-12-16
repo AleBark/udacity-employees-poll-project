@@ -13,7 +13,7 @@ export default function authedUser(state = null, action) {
                 ...action.authedUser
             };
         case LOG_AUTHED_USER_OUT:
-            return {};
+            return null
         case SAVE_AUTHED_USER_QUESTION_ANSWER:
             return {
                 ...state,
