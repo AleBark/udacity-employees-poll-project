@@ -12,7 +12,7 @@ const LoginForm = (props) => {
         e.preventDefault();
 
         if (user.password !== password) {
-            return alert("Wrong password")
+            return alert("Invalid user/password combination, try again.")
         }
 
         props.dispatch(setAuthedUser(user));

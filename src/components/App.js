@@ -15,9 +15,11 @@ import Poll from "./Poll";
 
 const App = (props) => {
 
+    const { dispatch } = props;
+
     useEffect(() => {
-        props.dispatch(handleInitialData());
-    }, []);
+        dispatch(handleInitialData());
+    }, [dispatch]);
 
     return (
         <Fragment>
@@ -47,8 +49,8 @@ const App = (props) => {
 
 const mapStateToProps = ({authedUser, users}) => ({
     loading: authedUser === null,
-    authedUser: authedUser,
-    users: users,
+    authedUser,
+    users,
 });
 
 export default connect(mapStateToProps)(App);

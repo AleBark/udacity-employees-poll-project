@@ -2,7 +2,7 @@ import {
     LOG_AUTHED_USER_OUT,
     SAVE_AUTHED_USER_QUESTION_ANSWER,
     REMOVE_AUTHED_USER_QUESTION_ANSWER,
-    SET_AUTHED_USER
+    SET_AUTHED_USER, ADD_AUTHED_USER_QUESTION
 } from "../actions/authedUser";
 
 export default function authedUser(state = null, action) {
@@ -30,6 +30,13 @@ export default function authedUser(state = null, action) {
                 ...state,
                 answers: updatedAnswers
             }
+        case ADD_AUTHED_USER_QUESTION: {
+            debugger;
+             return {
+                 ...state,
+                 questions : state.questions.concat(action.questionObj.id)
+             }
+        }
         default:
             return state;
     }

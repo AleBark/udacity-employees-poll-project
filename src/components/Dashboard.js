@@ -15,20 +15,28 @@ const Dashboard = (props) => {
             <fieldset>
                 <legend>New</legend>
                 <div className="questions-container">
-                    {notAnsweredQuestions.map((questionId) => (
-                            <QuestionCard key={questionId} id={questionId}/>
-                        )
-                    )}
+                    {
+                        notAnsweredQuestions.length
+                            ?
+                            notAnsweredQuestions.map((questionId) => (
+                                <QuestionCard key={questionId} id={questionId}/>
+                            ))
+                            : <h3>You've answered all the polls!</h3>
+                    }
                 </div>
             </fieldset>
 
             <fieldset>
                 <legend>Done</legend>
                 <div className="questions-container">
-                    {answeredQuestions.map((questionId) => (
-                            <QuestionCard key={questionId} id={questionId}/>
-                        )
-                    )}
+                    {
+                        answeredQuestions.length
+                            ?
+                            answeredQuestions.map((questionId) => (
+                                    <QuestionCard key={questionId} id={questionId}/>
+                            ))
+                            : <h3>No polls answered!</h3>
+                    }
                 </div>
             </fieldset>
         </>
