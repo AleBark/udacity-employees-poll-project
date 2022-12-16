@@ -65,15 +65,17 @@ li {
   float: left;
 }
 
-li a {
+li button {
   display: block;
-  color: white;
+  color:white;
+  background-color: rgba(12, 87, 157, 0.8);
+  border: none;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
-li a:hover:not(.active) {
+li button:hover:not(.active) {
   background-color: #111;
 }
 

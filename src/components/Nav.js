@@ -15,11 +15,11 @@ const Nav = (props) => {
 
     return (
         <ul className="nav-bar">
-            <li><a className={document.location.pathname === "/" ? "active" : ""} onClick={() => navigate("/")}>Dashboard</a></li>
-            <li><a className={document.location.pathname === "/leaderboard" ? "active" : ""} onClick={() => navigate("/leaderboard")}>Leaderboard</a></li>
-            <li><a className={document.location.pathname === "/add" ? "active" : ""} onClick={() => navigate("/add")}>New Poll</a></li>
+            <li><button className={document.location.pathname === "/" ? "active" : ""} onClick={() => navigate("/")}>Dashboard</button></li>
+            <li><button className={document.location.pathname === "/leaderboard" ? "active" : ""} onClick={() => navigate("/leaderboard")}>Leaderboard</button></li>
+            <li><button className={document.location.pathname === "/add" ? "active" : ""} onClick={() => navigate("/add")}>New Poll</button></li>
             <li style={{float: "right"}}>
-                <a href="#" onClick={handleLogout}>
+                <button onClick={handleLogout}>
                     Logout from: <strong>{props.authedUser.name}</strong>
                     <UserAvatar
                         style={{
@@ -30,7 +30,7 @@ const Nav = (props) => {
                         }}
                         avatarUrl={props.authedUser.avatarURL}
                     />
-                </a>
+                </button>
             </li>
         </ul>
 
