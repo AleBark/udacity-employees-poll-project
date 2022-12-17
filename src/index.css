@@ -184,3 +184,10 @@ td {
 .poll-submit > input {
   width: 100%;
 }
+/* Not found page */
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

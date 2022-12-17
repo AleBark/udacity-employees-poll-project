@@ -2,6 +2,7 @@ import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import UserAvatar from "./UserAvatar";
 import QuestionOption from "./QuestionOption";
+import NotFound from "./NotFound";
 
 const withRouter = (Component) => {
     return (props) => {
@@ -14,11 +15,16 @@ const withRouter = (Component) => {
 
 const Question = (props) => {
     const question = props.questions[props.id];
+
+    if (question === undefined) {
+        return <NotFound text={"Question not found"}/>
+    }
+
     const author = props.users[question.author];
     const userHasAlreadyAnsweredThisQuestion = Object.keys(props.authedUser.answers).includes(question.id);
 
     let selectedUserChoice = null;
-    if (userHasAlreadyAnsweredThisQuestion){
+    if (userHasAlreadyAnsweredThisQuestion) {
         selectedUserChoice = props.authedUser.answers[question.id];
     }
 
