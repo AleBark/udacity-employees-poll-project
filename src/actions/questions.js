@@ -44,20 +44,16 @@ export function saveQuestion(questionObj) {
 
 export function handleSaveQuestion(info) {
     return (dispatch) => {
-        //show loading
         return saveQuestionAPI(info)
             .then((questionObj) => {
                 dispatch(saveQuestion(questionObj))
                 dispatch(saveAuthedUserQuestion(questionObj))
-                //remove loading
             })
             .catch((e) => {
-                //remove loading
                 alert("The was an error selecting the answer. Try again." + e);
             }
         );
     }
-    //navigate home
 }
 
 export function handleQuestionAnswer(info) {

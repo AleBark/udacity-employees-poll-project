@@ -31,7 +31,6 @@ export default function authedUser(state = null, action) {
                 answers: updatedAnswers
             }
         case ADD_AUTHED_USER_QUESTION: {
-            debugger;
              return {
                  ...state,
                  questions : state.questions.concat(action.questionObj.id)

@@ -1,11 +1,14 @@
 import {connect} from "react-redux";
 import {useState} from "react";
 import {handleSaveQuestion} from "../actions/questions";
+import {useNavigate} from "react-router-dom";
 
 const Poll = (props) => {
 
     const [optionOne, setOptionOne] = useState("");
     const [optionTwo, setOptionTwo] = useState("");
+    const [sendingDataToApi, setSendingDataToApi] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,13 +22,15 @@ const Poll = (props) => {
         ) {
             return alert("Invalid questions text detected, try again.")
         }
-
+        setSendingDataToApi(true);
         props.dispatch(handleSaveQuestion({
             author: props.authedUser.id,
             optionOneText: optionOne,
             optionTwoText: optionTwo
             }
         ));
+
+        navigate("/");
     }
 
     const handleOptionOneChange = (e) => {
@@ -56,7 +61,7 @@ const Poll = (props) => {
                     </div>
                 </div>
                 <div className="poll-submit">
-                    <input type="submit" value="Submit" disabled={ optionOne === "" || optionTwo === "" }/>
+                    <input type="submit" value="Submit" disabled={ optionOne === "" || optionTwo === "" || sendingDataToApi}/>
                 </div>
             </form>
         </div>
