@@ -191,3 +191,15 @@ td {
   flex-direction: column;
   align-items: center;
 }
+
+/* Nav bar user */
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  height: 42px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 12px;
+  float:right;
+}

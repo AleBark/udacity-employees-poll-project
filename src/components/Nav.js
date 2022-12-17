@@ -20,17 +20,20 @@ const Nav = (props) => {
             <li><button className={document.location.pathname === "/add" ? "active" : ""} onClick={() => navigate("/add")}>New Poll</button></li>
             <li style={{float: "right"}}>
                 <button onClick={handleLogout}>
-                    Logout from: <strong>{props.authedUser.name}</strong>
-                    <UserAvatar
-                        style={{
-                            marginLeft: "10px",
-                            width: "16px",
-                            height: "16px",
-                            borderRadius: "50%"
-                        }}
-                        avatarUrl={props.authedUser.avatarURL}
-                    />
+                    Logout
                 </button>
+            </li>
+            <li className="user-info">
+                <UserAvatar
+                    style={{
+                        marginLeft: "10px",
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%"
+                    }}
+                    avatarUrl={props.authedUser.avatarURL}
+                />
+                <strong>{props.authedUser.name}</strong>
             </li>
         </ul>
 
