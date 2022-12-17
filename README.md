@@ -9,5 +9,5 @@ To run the project without major problems, it's recommended to use the following
 Node and Npm versions can be easily managed through [Node Version Manager](https://github.com/nvm-sh/nvm)
 
 After that, it should be simple as: running ```npm install``` && ```npm start```. 
-To run the application tests, use ```npm start test``` command
+To run the application tests, use ```npm run test``` command
 
