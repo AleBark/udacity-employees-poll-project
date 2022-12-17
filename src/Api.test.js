@@ -1,4 +1,4 @@
-import {getUsers, saveQuestion, saveQuestionAnswer, getQuestions} from "../api/api";
+import {getUsers, saveQuestion, saveQuestionAnswer, getQuestions} from "./api/api";
 
 describe('Functions that interact with app API', () => {
 

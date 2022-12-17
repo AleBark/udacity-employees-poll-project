@@ -39,7 +39,7 @@ const LoginForm = (props) => {
                     <label htmlFor="username">
                         <span>Username</span>
                     </label>
-                    <select className="form-input" onChange={handleUserChange} required>
+                    <select className="form-input" data-testid='user-select' onChange={handleUserChange} required>
                         <option key="" value="none"> Available users</option>
                         {props.userIds.map((id) => (
                             <option
@@ -56,12 +56,12 @@ const LoginForm = (props) => {
                     <label htmlFor="password">
                         <span>Password</span>
                     </label>
-                    <input autoComplete="true" onChange={handlePasswordChange} type="password" className="form-input"
+                    <input autoComplete="true" data-testid='user-password' onChange={handlePasswordChange} type="password" className="form-input"
                            required/>
                 </div>
 
                 <div className="form-item">
-                    <input type="submit" value="Log in" className="form-submit" disabled={password === ""}/>
+                    <input type="submit" data-testid='submit-button' value="Log in" className="form-submit" disabled={password === ""}/>
                 </div>
             </form>
         </div>
