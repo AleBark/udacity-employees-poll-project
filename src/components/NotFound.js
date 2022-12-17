@@ -9,7 +9,7 @@ const NotFound = ({text}) => {
 
     return (
         <div className="not-found-page">
-            {text}. If you want to go back home, click
+            {text ? text : 'Page not found'}. If you want to go back home, click
             <span style={{color: "blue", cursor: "pointer"}} onClick={handleGoHome}> here.</span>
         </div>
     )
