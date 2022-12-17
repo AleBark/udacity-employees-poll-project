@@ -12,6 +12,7 @@ import Nav from "./Nav";
 import Question from "./Question";
 import Leaderboard from "./Leaderboard";
 import Poll from "./Poll";
+import NotFound from "./NotFound";
 
 const App = (props) => {
 
@@ -30,6 +31,7 @@ const App = (props) => {
                         <div className="login-contents">
                             <Routes>
                                <Route path="/" exact element={<LoginForm/>}/>
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </div>
                      :
@@ -40,6 +42,7 @@ const App = (props) => {
                                 <Route path="/question/:id" element={<Question />} />
                                 <Route path="/leaderboard" element={<Leaderboard />} />
                                 <Route path="/add" element={<Poll />} />
+                                <Route from="*" element={<NotFound />} />
                             </Routes>
                         </div>
                 }
