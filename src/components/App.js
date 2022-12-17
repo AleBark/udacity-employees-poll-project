@@ -29,10 +29,9 @@ const App = (props) => {
                     props.authedUser === null
                      ?
                         <div className="login-contents">
-                            <Routes>
-                               <Route path="/" exact element={<LoginForm/>}/>
-                                <Route path="*" element={<NotFound />} />
-                            </Routes>
+                            <div className="login-contents">
+                               <LoginForm/>
+                            </div>
                         </div>
                      :
                         <div className="app-contents">
