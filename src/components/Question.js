@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import UserAvatar from "./UserAvatar";
-import {handleQuestionAnswer} from "../actions/questions";
+import QuestionOption from "./QuestionOption";
 
 const withRouter = (Component) => {
     return (props) => {
@@ -12,33 +12,15 @@ const withRouter = (Component) => {
     };
 };
 
-
 const Question = (props) => {
     const question = props.questions[props.id];
     const author = props.users[question.author];
     const userHasAlreadyAnsweredThisQuestion = Object.keys(props.authedUser.answers).includes(question.id);
+
     let selectedUserChoice = null;
-
     if (userHasAlreadyAnsweredThisQuestion){
-        selectedUserChoice = props.authedUser.answers[question.id]
+        selectedUserChoice = props.authedUser.answers[question.id];
     }
-
-
-    const navigate = useNavigate();
-
-    const handleAnswer = (qid, answer) => {
-        const { dispatch, authedUser, users } = props;
-
-        dispatch(
-            handleQuestionAnswer({
-                authedUser: authedUser.id,
-                qid,
-                answer,
-                users
-            }));
-
-        navigate("/");
-    };
 
     return (
         <div>
@@ -65,18 +47,22 @@ const Question = (props) => {
             </div>
 
             <div className="question-options">
-                <div className="option">
-                    <span style={{
-                        color: selectedUserChoice && selectedUserChoice === "optionOne" ? 'green' : ''
-                    }}>{question.optionOne.text}</span>
-                    <button onClick={() => handleAnswer(question.id, "optionOne")} disabled={userHasAlreadyAnsweredThisQuestion }>Click</button>
-                </div>
-                <div className="option">
-                    <span style={{
-                        color: selectedUserChoice && selectedUserChoice === "optionTwo" ? 'green' : ''
-                    }}>{question.optionTwo.text}</span>
-                    <button onClick={() => handleAnswer(question.id, "optionTwo")} disabled={userHasAlreadyAnsweredThisQuestion }>Click</button>
-                </div>
+                <QuestionOption
+                    questionId={props.id}
+                    selectedUserChoice={selectedUserChoice}
+                    optionText={question.optionOne.text}
+                    optionNumber={"optionOne"}
+                    userHasAlreadyAnsweredThisQuestion={userHasAlreadyAnsweredThisQuestion}
+                />
+
+                <QuestionOption
+                    questionId={props.id}
+                    selectedUserChoice={selectedUserChoice}
+                    optionText={question.optionTwo.text}
+                    optionNumber={"optionTwo"}
+                    userHasAlreadyAnsweredThisQuestion={userHasAlreadyAnsweredThisQuestion}
+                />
+
             </div>
         </div>
     )

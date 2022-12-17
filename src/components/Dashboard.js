@@ -3,23 +3,31 @@ import QuestionCard from "./QuestionCard";
 
 const Dashboard = (props) => {
 
-    const answeredQuestions = props.questionIds.filter(
-        (questionId) => Object.keys(props.authedUser.answers).includes(questionId)
-    );
-    const notAnsweredQuestions = props.questionIds.filter(
-        (questionId) => !answeredQuestions.includes(questionId)
-    );
+    let answeredQuestions = [];
+    let unansweredQuestions = [];
+
+    props.questionIds.forEach(
+        (questionId) => {
+            if(Object.keys(props.authedUser.answers).includes(questionId)){
+                return answeredQuestions.push(props.questions[questionId]);
+            }
+            return unansweredQuestions.push(props.questions[questionId]);
+        }
+    )
+
+    unansweredQuestions = unansweredQuestions.sort((a, b) => b.timestamp - a.timestamp);
+    answeredQuestions = answeredQuestions.sort((a, b) => b.timestamp - a.timestamp);
 
     return (
         <>
             <fieldset>
-                <legend>New</legend>
+                <legend>Unanswered</legend>
                 <div className="questions-container">
                     {
-                        notAnsweredQuestions.length
+                        unansweredQuestions.length
                             ?
-                            notAnsweredQuestions.map((questionId) => (
-                                <QuestionCard key={questionId} id={questionId}/>
+                            unansweredQuestions.map((question) => (
+                                <QuestionCard key={question.id} id={question.id}/>
                             ))
                             : <h3>You've answered all the polls!</h3>
                     }
@@ -27,13 +35,13 @@ const Dashboard = (props) => {
             </fieldset>
 
             <fieldset>
-                <legend>Done</legend>
+                <legend>Answered</legend>
                 <div className="questions-container">
                     {
                         answeredQuestions.length
                             ?
-                            answeredQuestions.map((questionId) => (
-                                    <QuestionCard key={questionId} id={questionId}/>
+                            answeredQuestions.map((question) => (
+                                    <QuestionCard key={question.id} id={question.id}/>
                             ))
                             : <h3>No polls answered!</h3>
                     }

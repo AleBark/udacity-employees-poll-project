@@ -121,7 +121,8 @@ li button:hover:not(.active) {
   flex-direction: column;
 }
 
-.option > button {
+.option > p > button {
+  width: 100%;
   background-color: rgba(12, 87, 157, 0.8);
   border: 1px solid rgba(12, 87, 157, 0.8);
 }
