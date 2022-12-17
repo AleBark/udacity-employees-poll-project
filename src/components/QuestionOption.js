@@ -1,10 +1,7 @@
 import {connect} from "react-redux";
 import {handleQuestionAnswer} from "../actions/questions";
-import {useNavigate} from "react-router-dom";
 
 const QuestionOption = (props) => {
-    const navigate = useNavigate();
-
     const usersIds = Object.keys(props.users);
     const totalUsers = Object.keys(props.users).length;
     let totalVotesInThisOption = 0;
@@ -33,8 +30,6 @@ const QuestionOption = (props) => {
                 answer,
                 users
             }));
-
-        navigate("/");
     };
 
     const style = props.userHasAlreadyAnsweredThisQuestion ? {
