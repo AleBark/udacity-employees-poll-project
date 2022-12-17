@@ -1,6 +1,6 @@
 import {saveQuestion as saveQuestionAPI, saveQuestionAnswer as saveQuestionAnswerAPI} from "../api/api";
 import {removeAuthedUserQuestionAnswer, saveAuthedUserQuestion, saveAuthedUserQuestionAnswer} from "./authedUser";
-import {removeUserQuestionAnswer, saveUserQuestionAnswer} from "./users";
+import {removeUserQuestionAnswer, saveUserQuestion, saveUserQuestionAnswer} from "./users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const REMOVE_QUESTION_ANSWER = "REMOVE_QUESTION_ANSWER";
@@ -48,6 +48,7 @@ export function handleSaveQuestion(info) {
             .then((questionObj) => {
                 dispatch(saveQuestion(questionObj))
                 dispatch(saveAuthedUserQuestion(questionObj))
+                dispatch(saveUserQuestion({authedUser: info.author, questionObj}))
             })
             .catch((e) => {
                 alert("The was an error selecting the answer. Try again." + e);

@@ -3,6 +3,11 @@ import UserAvatar from "./UserAvatar";
 
 const Leaderboard = (props) => {
     const userIds = Object.keys(props.users);
+
+    const userList = userIds.map((userId) => (
+        props.users[userId]
+    )).sort((a, b) => ((Object.keys(b.answers).length + b.questions.length) - (Object.keys(a.answers).length + a.questions.length)));
+
     return (
         <div className="leaderboard-container">
             <div className="leaderboard-title">
@@ -18,8 +23,8 @@ const Leaderboard = (props) => {
                 </thead>
                 <tbody>
                 {
-                    userIds.map((userId) => (
-                        <tr key={userId}>
+                    userList.map((user) => (
+                        <tr key={user.id}>
                             <td>
                                 <div className="user-column">
                                     <UserAvatar
@@ -29,19 +34,19 @@ const Leaderboard = (props) => {
                                             height: "36px",
                                             borderRadius: "50%"
                                         }}
-                                        avatarUrl={props.users[userId].avatarURL}
+                                        avatarUrl={props.users[user.id].avatarURL}
                                     />
                                     <p>
-                                        <span>{props.users[userId].name}</span><br/>
-                                        <span>{props.users[userId].id}</span>
+                                        <span>{props.users[user.id].name}</span><br/>
+                                        <span>{props.users[user.id].id}</span>
                                     </p>
                                 </div>
                             </td>
                             <td>
-                                <p>{Object.keys(props.users[userId].answers).length}</p>
+                                <p>{Object.keys(props.users[user.id].answers).length}</p>
                             </td>
                             <td>
-                                <p>{props.users[userId].questions.length}</p>
+                                <p>{props.users[user.id].questions.length}</p>
                             </td>
                         </tr>
                    ))
