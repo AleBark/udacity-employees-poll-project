@@ -2,22 +2,23 @@ import {connect} from "react-redux";
 import {handleQuestionAnswer} from "../actions/questions";
 
 const QuestionOption = (props) => {
-    const usersIds = Object.keys(props.users);
-    const totalUsers = Object.keys(props.users).length;
-    let totalVotesInThisOption = 0;
 
-    usersIds.forEach(
-        (userId) => {
-            if (props.users[userId] !== props.authedUser) {
-                if (props.users[userId].answers[props.questionId] === props.optionNumber) {
-                    totalVotesInThisOption++;
-                }
-            }
+    let totalUsersVotes = 0;
+    let totalVotesInCurrentQuestion = 0;
+    let usersVotesPercentage = () => {};
+
+    if (props.userHasAlreadyAnsweredThisQuestion) {
+        const totalUserVotesInOptionOne = props.questions[props.questionId].optionOne.votes.length
+        const totalUserVotesInOptionTwo = props.questions[props.questionId].optionTwo.votes.length
+
+        totalUsersVotes = totalUserVotesInOptionOne + totalUserVotesInOptionTwo;
+        totalVotesInCurrentQuestion = props.optionNumber === "optionOne"
+            ? totalUserVotesInOptionOne
+            : totalUserVotesInOptionTwo;
+
+         usersVotesPercentage = (totalVotesInCurrentQuestion, totalUsersVotes) => {
+            return ((100 * totalVotesInCurrentQuestion) / totalUsersVotes)
         }
-    )
-
-    const usersVotesPercentage = (totalUsers, totalVotesInThisOption) => {
-        return (100 * totalVotesInThisOption) / totalUsers;
     }
 
     const handleAnswer = (qid, answer) => {
@@ -34,7 +35,7 @@ const QuestionOption = (props) => {
 
     const style = props.userHasAlreadyAnsweredThisQuestion ? {
         color: props.selectedUserChoice === props.optionNumber ? 'green' : 'red',
-        fontWeight:  props.selectedUserChoice === props.optionNumber ? 'bold' : ''
+        fontWeight: props.selectedUserChoice === props.optionNumber ? 'bold' : ''
     } : null;
 
     return (
@@ -56,8 +57,8 @@ const QuestionOption = (props) => {
                 !props.userHasAlreadyAnsweredThisQuestion
                     ? <></>
                     : <div>
-                        <p>Number of users that voted in this option: <strong>{totalVotesInThisOption}</strong></p>
-                        <p>Percentage of users that voted in this option: <strong>{usersVotesPercentage(totalUsers, totalVotesInThisOption)} %</strong></p>
+                        <p>Number of users that voted in this option: <strong>{props.userHasAlreadyAnsweredThisQuestion && totalVotesInCurrentQuestion}</strong></p>
+                        <p>Percentage of users that voted in this option: <strong>{usersVotesPercentage(totalVotesInCurrentQuestion, totalUsersVotes).toFixed(2)} %</strong></p>
                     </div>
             }
         </div>
