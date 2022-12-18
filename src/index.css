@@ -86,6 +86,7 @@ li button:hover:not(.active) {
 /* Questions */
 .questions-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -110,6 +111,7 @@ li button:hover:not(.active) {
 .question-card {
   height: 200px;
   width: 200px;
+  margin: 10px 5px 5px 5px;
   border: 1px solid rgba(12, 87, 157, 0.8);
   border-radius: 4%;
   display: flex;
@@ -202,4 +204,11 @@ td {
   align-items: center;
   margin-right: 12px;
   float:right;
+}
+
+.alternate-view-row  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1%;
 }
