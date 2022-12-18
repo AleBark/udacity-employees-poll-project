@@ -23,18 +23,22 @@ const Nav = (props) => {
                     Logout
                 </button>
             </li>
-            <li className="user-info">
-                <UserAvatar
-                    style={{
-                        marginLeft: "10px",
-                        width: "16px",
-                        height: "16px",
-                        borderRadius: "50%"
-                    }}
-                    avatarUrl={props.authedUser.avatarURL}
-                />
-                <strong>{props.authedUser.name}</strong>
-            </li>
+            {
+            props.authedUser ?
+                <li className="user-info">
+                    <UserAvatar
+                        style={{
+                            marginLeft: "10px",
+                            width: "16px",
+                            height: "16px",
+                            borderRadius: "50%"
+                        }}
+                        avatarUrl={props.authedUser.avatarURL}
+                    />
+                    <strong>{props.authedUser.name}</strong>
+                </li>
+            : <></>
+            }
         </ul>
 
     )

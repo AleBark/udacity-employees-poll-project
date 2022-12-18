@@ -24,6 +24,7 @@ const App = (props) => {
 
     return (
         <Fragment>
+            <Nav />
             <LoadingBar/>
                 {
                     props.authedUser === null
@@ -35,7 +36,6 @@ const App = (props) => {
                         </div>
                      :
                         <div className="app-contents">
-                            <Nav />
                             <Routes>
                                 <Route path="/" exact element={<Dashboard/>}/>
                                 <Route path="/question/:id" element={<Question />} />
